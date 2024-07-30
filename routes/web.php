@@ -21,12 +21,15 @@ use App\Http\Controllers\UserController;
 // });
 
 //routes of the_mentor2
-Route::get('/', [ProjectController::class, 'index']);
+Route::get('/', [ProjectController::class, 'index'])->name('dashboard');
+Route::get('/projects', [ProjectController::class, 'projects'])->name('projects');
 Route::get('/project/add', [ProjectController::class, 'add'])->name('project.add');
 Route::get('/project/edit/{id}', [ProjectController::class, 'edit'])->name('project.edit');
 Route::post('/project/store', [ProjectController::class, 'store'])->name('project.store');
 Route::post('/project/update', [ProjectController::class, 'update'])->name('project.update');
-Route::get('/create', [ProductController::class, 'create']);
+
+Route::get('/add_task', [ProjectController::class, 'taskAdd'])->name('task.add');
+Route::post('/create_task', [ProjectController::class, 'taskcreate'])->name('task.create');
 
 Route::get('/payment', [ProductController::class, 'payment']);
 
@@ -37,6 +40,8 @@ Route::post('/save_payment', [ProductController::class, 'save_payment']);
 Route::post('/login', [UserController::class, 'login']);
 
 
+
+Route::get('/create', [ProductController::class, 'create']);
 Route::get('goes', [ProductController::class, 'goes'])->name('goes');
 Route::get('/tasks/{id}', [ProductController::class, 'task_list']);
 Route::get('/task/add', [ProductController::class, 'create']);
@@ -48,7 +53,7 @@ Route::post('/tasks/update/{id}', [ProductController::class, 'update']);
 
 
 //for projects
-Route::get('/project/add', [ProductController::class, 'create_project']);
-Route::post('/project/store_project', [ProductController::class, 'store_project']);
+// Route::get('/project/add', [ProductController::class, 'create_project']);
+// Route::post('/project/store_project', [ProductController::class, 'store_project']);
 //for daily cycles
 Route::get('/daily_cycles', [ProductController::class, 'daily_cycles']);

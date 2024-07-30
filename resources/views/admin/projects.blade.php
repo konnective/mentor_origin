@@ -14,8 +14,13 @@
         <div class="pro-table relative overflow-x-auto shadow-md sm:rounded-lg">
 
             <button class="bg-blue-500 float-right text-white py-2 px-4 rounded-md my-4">
-                <a href="">
+                <a href="{{ route('project.add') }}">
                     Add Project
+                </a>
+            </button>
+            <button class="bg-green-500 float-right mx-4 text-white py-2 px-4 rounded-md my-4">
+                <a href="{{ route('task.add') }}">
+                    Add Task
                 </a>
             </button>
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
