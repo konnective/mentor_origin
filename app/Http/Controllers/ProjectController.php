@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Projects;
 use App\Models\Task;
+use DateTime;
 use Google\Service\CloudResourceManager\Project;
 use Google\Service\Dataproc\Session;
 use Illuminate\Http\Request;
@@ -17,14 +18,24 @@ class ProjectController extends Controller
     public function index()
     {
 
+
+
+
         $tasks = Task::where('status', 1)->get()->map(function ($item) {
             $project = Projects::where('id', $item->project_id)->first();
             $item->project = $project->name;
             return $item;
         });
+        $projects = Projects::where('status', 1)->get()->map(function ($item) {
+            $date1 = new DateTime();
+            $date2 = new DateTime($item->end_date);
+            $interval = $date2->diff($date1);
+            $item->days_left = $interval->days;
+            return $item;
+        });
 
 
-        return view('admin.index', compact('tasks'));
+        return view('admin.index', compact('tasks', 'projects'));
     }
     public function projects()
     {
