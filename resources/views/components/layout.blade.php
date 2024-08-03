@@ -27,7 +27,7 @@
     <title>The Mentor</title>
 </head>
 
-<body class="mb-48">
+<body class="">
     <nav class="navd flex justify-between items-center p-5  bg-orange-400">
         <a href="{{ env('APP_URL') }}"><span class="text-white">The Mentor</span></a>
         {{-- <a href="/"><img class="w-24" src="{{ asset('images/logo.png') }}" alt="" class="logo" /></a> --}}

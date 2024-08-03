@@ -8,6 +8,7 @@ use DateTime;
 use Google\Service\CloudResourceManager\Project;
 use Google\Service\Dataproc\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session as FacadesSession;
 
 class ProjectController extends Controller
@@ -20,6 +21,8 @@ class ProjectController extends Controller
 
 
 
+        $today = new DateTime();
+        // dd();
 
         $tasks = Task::where('status', 1)->get()->map(function ($item) {
             $project = Projects::where('id', $item->project_id)->first();
@@ -34,8 +37,12 @@ class ProjectController extends Controller
             return $item;
         });
 
+        // $points = DB::table('tblpoints')->whereMonth('date', $today->format('d'))->get();
+        $points = DB::table('tblpoints')->get();
 
-        return view('admin.index', compact('tasks', 'projects'));
+
+
+        return view('admin.index', compact('tasks', 'projects', 'points'));
     }
     public function projects()
     {

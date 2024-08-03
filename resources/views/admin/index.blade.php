@@ -136,14 +136,55 @@
                                 </td>
                             </tr>
                         @endforeach
-
-
-
                     </tbody>
                 </table>
             </div>
         </div>
 
+        {{-- section for progress tracker --}}
+        <div class="projects_section items-center  m-5">
+            <div
+                class="pro-table relative py-10 px-15 flex flex-wrap  bg-gray-50 overflow-x-auto shadow-md sm:rounded-lg w-fulld">
+                @foreach ($points as $item)
+                    <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                    @if ($item->cycles == 0)
+                        <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-gray-400"></div>
+                    @else
+                        <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                    @endif
+                @endforeach
+                {{-- <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-gray-500"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div>
+                <div class="sm:rounded-lg h-[30px] mx-5 my-2 w-[30px] bg-lime-400"></div> --}}
+            </div>
+        </div>
 
 
         {{-- modal popup here --}}
