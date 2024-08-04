@@ -22,7 +22,9 @@ class ProjectController extends Controller
 
 
         $today = new DateTime();
-        // dd();
+        $currentMonth = date('m');
+        $currentYear = date('Y');
+        // dd($this->makeRec());
 
         $tasks = Task::where('status', 1)->get()->map(function ($item) {
             $project = Projects::where('id', $item->project_id)->first();
@@ -39,6 +41,12 @@ class ProjectController extends Controller
 
         // $points = DB::table('tblpoints')->whereMonth('date', $today->format('d'))->get();
         $points = DB::table('tblpoints')->get();
+        $recOfMonth = DB::table('tblpoints')->whereMonth('date', $currentMonth)->whereYear('date', $currentYear)->get();
+        // dd($recOfMonth);
+        if (count($recOfMonth) <= 0) {
+            // dd('this');
+            $this->makeRec();
+        }
 
 
 
@@ -111,5 +119,34 @@ class ProjectController extends Controller
         Task::create($input);
 
         return redirect()->route('task.add');
+    }
+    public function makeRec()
+    {
+        $currentMonth = date('m');
+        $currentYear = date('Y');
+
+        // Get the number of days in the current month
+        $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $currentMonth, $currentYear);
+
+
+        $dates = [];
+        // Create records for each day of the month
+        for ($day = 1; $day <= $daysInMonth; $day++) {
+            $date = $currentYear . '-' . $currentMonth . '-' . str_pad($day, 2, '0', STR_PAD_LEFT);
+            $dates[]  = $date;
+            // YourModel::create([
+            //     'date' => $date,
+            //     // Add any other fields you want to populate
+            // ]);
+
+            $inputDate['user_id'] = 1;
+            $inputDate['task_id'] = 1;
+            $inputDate['value'] = 0;
+            $inputDate['date'] = $date;
+
+            DB::table('tblpoints')->insert($inputDate);
+        }
+
+        return $dates;
     }
 }
