@@ -31,6 +31,7 @@ Route::post('/project/update', [ProjectController::class, 'update'])->name('proj
 Route::get('/add_task', [ProjectController::class, 'taskAdd'])->name('task.add');
 Route::post('/create_task', [ProjectController::class, 'taskcreate'])->name('task.create');
 
+
 Route::get('/payment', [ProductController::class, 'payment']);
 
 Route::post('/save_payment', [ProductController::class, 'save_payment']);

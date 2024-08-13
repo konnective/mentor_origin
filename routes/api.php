@@ -7,6 +7,7 @@ use App\Http\Controllers\GoalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UserController;
 
 
@@ -51,6 +52,10 @@ Route::post('add_cred', [AuthController::class, 'add_pass']);
 Route::post('finances', [FinanceController::class, 'finances']);
 Route::post('add_payment', [FinanceController::class, 'add_payment']);
 Route::post('dispatch', [FinanceController::class, 'test']);
+
+
+// api routes for completing task
+Route::post('/task_done', [ProjectController::class, 'completeTask'])->name('taskDone');
 
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -40,7 +40,7 @@ class ProjectController extends Controller
         });
 
         // $points = DB::table('tblpoints')->whereMonth('date', $today->format('d'))->get();
-        $points = DB::table('tblpoints')->get();
+        // $points = DB::table('tblpoints')->get();
         $recOfMonth = DB::table('tblpoints')->whereMonth('date', $currentMonth)->whereYear('date', $currentYear)->get();
         // dd($recOfMonth);
         if (count($recOfMonth) <= 0) {
@@ -50,7 +50,7 @@ class ProjectController extends Controller
 
 
 
-        return view('admin.index', compact('tasks', 'projects', 'points'));
+        return view('admin.index', compact('tasks', 'projects', 'recOfMonth'));
     }
     public function projects()
     {
@@ -148,5 +148,23 @@ class ProjectController extends Controller
         }
 
         return $dates;
+    }
+    public function completeTask(Request $req)
+    {
+
+        $id = $req->id;
+        $today = new DateTime();
+        $dateRec = DB::table('tblpoints')->whereDate('date', $today)->update(['cycles' => 1]);
+
+        $task = Task::find($id);
+        $task->status = 0;
+        // $task->save();
+
+
+
+        $res = [
+            "success" => true,
+        ];
+        return response()->json($res);
     }
 }
